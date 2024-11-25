@@ -1,16 +1,34 @@
+import java.awt.*;
+import java.io.Serializable;
+import java.util.Random;
 
-public class Player implements Objects{
+public class Player implements Objects, Serializable {
+
     private int X, Y;
-    private int Color;
     private int size;
+    private Color color;
+    private int ID;
+    private String name;
 
-    public Player(int x, int y, int color, int size) {
+    public Player(int x, int y, int size,int id,String name) {
         X = x;
         Y = y;
-        Color = color;
+        this.color = getRandomColor();
         this.size = size;
+        ID = id;
+        this.name = name;
     }
 
+    private Color getRandomColor() {
+        Random random = new Random();
+
+        // RGB 값을 0~255 사이의 무작위 값으로 생성
+        int red = random.nextInt(256);
+        int green = random.nextInt(256);
+        int blue = random.nextInt(256);
+
+        return new Color(red, green, blue);
+    }
 
     public int getX() {
         return this.X;
@@ -18,6 +36,14 @@ public class Player implements Objects{
 
     public int getY() {
         return this.Y;
+    }
+
+    public int getSize(){
+        return size;
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     public void setY(int y) {
@@ -28,12 +54,31 @@ public class Player implements Objects{
         X = x;
     }
 
+    public void setID(int id){
+        ID = id;
+    }
 
-    public void setColor(int color) {
-        Color = color;
+    public int getID(){
+        return ID;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public void setSize(int size) {
         this.size = size;
     }
+    public void incrSize(){
+        this.size+=2;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
+    }
+
 }

@@ -1,12 +1,16 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Food implements Objects{
+public class Food implements Objects, Serializable {
     Random random = new Random();
     private int X,Y;
+    private int size = 150;
+    private int id;
 
-    public Food(int Max){
+    public Food(int Max,int id){
         X = random.nextInt(Max);
         Y = random.nextInt(Max);
+        this.id = id;
     }
 
 
@@ -18,6 +22,14 @@ public class Food implements Objects{
     @Override
     public int getY() {
         return Y;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public int getSize(){
+        return size;
     }
 
     @Override
